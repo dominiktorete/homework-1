@@ -9,7 +9,7 @@ int main() {
 	using std::cin;
 	using std::endl;
 	std::string str{};
-	cout << "Введите число:" << endl;
+	cout << "Введите слово:" << endl;
     getline(cin >> std::ws, str);
 	cout << "Вы ввели:\n" << str << endl;
 }
