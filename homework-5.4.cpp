@@ -1,9 +1,9 @@
-﻿#include <iostream>
-const int MAX = 10;
-void bublesort(int (&arr)[MAX]) {
-	for (int i = 0; i < MAX - 1; i++) {
+#include <iostream>
+#include <windows.h>
+void bublesort(int (&arr)[10]) {
+	for (int i = 0; i < 10; i++) {
 		bool flag = false;
-		for (int j = MAX - 1; j - 1 >= (0 + i); j--) {
+		for (int j = 9; j - 1 >= i; j--) {
 			if (arr[j] < arr[j - 1]) {
 				int item = arr[j - 1];
 				arr[j - 1] = arr[j];
@@ -20,9 +20,17 @@ int main() {
 	using std::cin;
 	using std::cout;
 	using std::endl;
-	int arr[MAX]{ 10, 3, 4, 1, 8, 9, 7, 2, 6, 5 };
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int arr[10]{ 10, 3, 4, 1, 8, 9, 7, 2, 6, 5 };
+	cout << "Массив до сортировки: ";
+	for (int i = 0; i < 10; i++) {
+		std::cout << arr[i] << " ";
+	}
+	cout << "\n";
 	bublesort(arr);
-	for (int i = 0; i < MAX; i++) {
+	cout << "Массив после сортировки: ";
+	for (int i = 0; i < 10; i++) {
 		std::cout << arr[i] << " ";
 	}
 }
