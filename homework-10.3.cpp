@@ -2,9 +2,18 @@
 #include <cassert>
 long long** create_two_dim_array(int rows, int columns){
     assert(rows > 0 && rows < 100 && columns > 0 && columns < 100);
+
     long long** arr = new long long*[rows];
+    if(arr == nullptr)return nullptr;
     for(int i = 0;i < rows; i++){
         arr[i] = new long long[columns];
+        if(arr[i] == nullptr){
+            for(int i = 0;i < rows; i++){
+                if(arr[i] != nullptr)delete[] arr[i];
+            }
+            delete[] arr;
+            return nullptr;
+        }
     }
     return arr;
 }
