@@ -4,7 +4,6 @@ double* create_array(int size){
     assert(size > 0 && size < 100);
 
     double* d = new double[size]{};
-
     return d;
 }
 int main(){
