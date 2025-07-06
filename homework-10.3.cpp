@@ -6,10 +6,10 @@ long long** create_two_dim_array(int rows, int columns){
     long long** arr = new long long*[rows];
     if(arr == nullptr)return nullptr;
     for(int i = 0;i < rows; i++){
-        arr[i] = new long long[columns];
+        arr[i] = new (std::nothrow) long long[columns];
         if(arr[i] == nullptr){
-            for(int i = 0;i < rows; i++){
-                if(arr[i] != nullptr)delete[] arr[i];
+            for(int j = 0;j < i; j++){
+                delete[] arr[j];
             }
             delete[] arr;
             return nullptr;
@@ -21,15 +21,7 @@ long long** create_two_dim_array(int rows, int columns){
 void fill_two_dim_array(long long** arr, int rows, int columns){
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < columns; j++){
-            if(i==0){
-                arr[i][j] = j+1;
-            }
-            else if(j==0){
-                arr[i][j] = i+1;
-            }
-            else{
-                arr[i][j] = (i+1)*(j+1);
-            }
+            arr[i][j] = (i+1)*(j+1);
         }
     }
 }
@@ -66,7 +58,7 @@ int main(){
         delete_two_dim_array(array,rows);
     }
     else{
-        std::cout << "Error allocation memory!!!";
+        std::cerr << "Error allocation memory!!!";
         return -1;
     }
     return 0;
