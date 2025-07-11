@@ -5,12 +5,10 @@
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	
+	std::string str{};
 	std::ifstream file("in.txt");
 	if (file.is_open()) {
-		while (!file.eof()) {
-			std::string str{};
-			file >> str;
+		while (file >> str) {
 			std::cout << str << std::endl;
 		}
 		file.close();
