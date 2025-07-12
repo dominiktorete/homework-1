@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <fstream>
 #include <windows.h>
@@ -25,6 +25,7 @@ int main() {
 	}
 	else {
 		std::cerr << "Error: file not open" << std::endl;
+		delete[] arr;
 		return -1;
 	}
 	delete[] arr;
