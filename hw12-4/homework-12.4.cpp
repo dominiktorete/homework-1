@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <string>
 #include <fstream>
 #include <windows.h>
@@ -20,7 +20,7 @@ int main() {
 		for (int j = 0; j < index1; j++) {
 			arr2d[j] = new (std::nothrow) int[index2] {};
 			if (!arr2d[j]) {
-				for (int i = 0; j < j; i++) {
+				for (int i = 0; i < j; i++) {
 					delete[] arr2d[i];
 				}
 				delete[] arr2d;
