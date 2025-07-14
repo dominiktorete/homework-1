@@ -127,7 +127,7 @@ void game_logic(char** arr, char** copy, int rows, int columns) {
            }
         }
         if(copy[pI][pJ] == '-' && lifeCount == 3) arr[pI][pJ] = '*';
-        else if(copy[pI][pJ] == '*' && (lifeCount > 3 || lifeCount < 2) arr[pI][pJ] = '-';
+        else if(copy[pI][pJ] == '*' && (lifeCount > 3 || lifeCount < 2)) arr[pI][pJ] = '-';
      }
   }
 }
