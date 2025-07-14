@@ -108,146 +108,28 @@ void copy_array(char** arr, char** copy, int rows, int columns) {
 	}
 }
 void game_logic(char** arr, char** copy, int rows, int columns) {
-	for (int i = 0; i < rows; i++) {
-		for (int j = 0; j < columns; j++) {
-			if (i == 0 && j == 0) {
-				int count{};
-				if (copy[i + 1][j] == '*')count++;
-				if (copy[i + 1][j + 1] == '*')count++;
-				if (copy[i][j + 1] == '*')count++;
-				if (copy[i][j] == '*' && count < 2 || count > 3) {
-					arr[i][j] = '-';
-				}
-				else if (copy[i][j] == '-' && count == 3) {
-					arr[i][j] = '*';
-				}
-			}
-			else if (i == rows - 1 && j == 0) {
-				int count{};
-				if (copy[i - 1][j] == '*')count++;
-				if (copy[i - 1][j + 1] == '*')count++;
-				if (copy[i][j + 1] == '*')count++;
-				
-				if (copy[i][j] == '*' && count < 2 || count > 3) {
-					arr[i][j] = '-';
-				}
-				
-				else if (copy[i][j] == '-' && count == 3) {
-					arr[i][j] = '*';
-				}
-
-			}
-			else if (i == 0 && j == columns - 1) {
-				int count{};
-				if (copy[i + 1][j] == '*')count++;
-				if (copy[i + 1][j - 1] == '*')count++;
-				if (copy[i][j - 1] == '*')count++;
-				
-				if (copy[i][j] == '*' && count < 2 || count > 3) {
-					arr[i][j] = '-';
-				}
-				
-				else if (copy[i][j] == '-' && count == 3) {
-					arr[i][j] = '*';
-				}
-
-			}
-			else if (i == rows - 1 && j == columns - 1) {
-				int count{};
-				if (copy[i - 1][j] == '*')count++;
-				if (copy[i - 1][j - 1] == '*')count++;
-				if (copy[i][j - 1] == '*')count++;
-				
-				if (copy[i][j] == '*' && count < 2 || count > 3) {
-					arr[i][j] = '-';
-				}
-				
-				else if (copy[i][j] == '-' && count == 3) {
-					arr[i][j] = '*';
-				}
-
-			}
-			else if (j == 0 && i != 0) {
-				int count{};
-				if (copy[i + 1][j] == '*')count++;
-				if (copy[i + 1][j + 1] == '*')count++;
-				if (copy[i][j + 1] == '*')count++;
-				if (copy[i - 1][j] == '*')count++;
-				if (copy[i - 1][j + 1] == '*')count++;
-				
-				if (copy[i][j] == '*' && count < 2 || count > 3) {
-					arr[i][j] = '-';
-				}
-				
-				else if (copy[i][j] == '-' && count == 3) {
-					arr[i][j] = '*';
-				}
-			}
-
-			else if (j != 0 && i == 0) {
-				int count{};
-				if (copy[i + 1][j] == '*')count++;
-				if (copy[i + 1][j + 1] == '*')count++;
-				if (copy[i][j + 1] == '*')count++;
-				if (copy[i + 1][j - 1] == '*')count++;
-				if (copy[i][j - 1] == '*')count++;
-				if (copy[i][j] == '*' && count < 2 || count > 3) {
-					arr[i][j] = '-';
-				}
-				else if (copy[i][j] == '-' && count == 3) {
-					arr[i][j] = '*';
-				}
-			}
-			else if (j != 0 && i == rows -1) {
-				int count{};
-				if (copy[i][j + 1] == '*')count++;
-				if (copy[i - 1][j] == '*')count++;
-				if (copy[i - 1][j + 1] == '*')count++;
-				if (copy[i][j - 1] == '*')count++;
-				if (copy[i - 1][j - 1] == '*')count++;
-				
-				if (copy[i][j] == '*' && count < 2 || count > 3) {
-					arr[i][j] = '-';
-				}
-				else if (copy[i][j] == '-' && count == 3) {
-					arr[i][j] = '*';
-				}
-			}
-			else if (j == columns - 1 && i != 0) {
-				int count{};
-				if (copy[i + 1][j] == '*')count++;
-				if (copy[i - 1][j] == '*')count++;
-				if (copy[i + 1][j - 1] == '*')count++;
-				if (copy[i][j - 1] == '*')count++;
-				if (copy[i - 1][j - 1] == '*')count++;
-				
-				if (copy[i][j] == '*' && count < 2 || count > 3) {
-					arr[i][j] = '-';
-				}
-				else if (copy[i][j] == '-' && count == 3) {
-					arr[i][j] = '*';
-				}
-			}
-			else if (i > 0 && i < rows - 1 && j > 0 && j < columns - 1) {
-				int count{};
-				if (copy[i + 1][j] == '*')count++;
-				if (copy[i + 1][j + 1] == '*')count++;
-				if (copy[i][j + 1] == '*')count++;
-				if (copy[i - 1][j] == '*')count++;
-				if (copy[i - 1][j + 1] == '*')count++;
-				if (copy[i + 1][j - 1] == '*')count++;
-				if (copy[i][j - 1] == '*')count++;
-				if (copy[i - 1][j - 1] == '*')count++;
-				
-				if (copy[i][j] == '*' && count < 2 || count > 3) {
-					arr[i][j] = '-';
-				}
-				else if (copy[i][j] == '-' && count == 3) {
-					arr[i][j] = '*';
-				}
-			}
-		}
-	}
+  for(int pI = 0; pI < rows; pI++){
+     for(int pJ = 0; pJ < columns; pJ++){      int lifeCount = 0;
+        for( int i = pI - 1; i <= pI + 1;   i++ ){
+            if( i < 0 || i >= rows) {
+               continue;
+            }
+            for( int j = pJ - 1; j <= pJ + 1; j++ ){
+              if( i < 0 || j >= columns){
+                 continue;
+              }
+              if( i == i && j == j ){
+                 continue;
+              }
+              if( copy[i][j] == '*' ){
+                 lifeCount++;
+              }
+           }
+        }
+        if(copy[pI][pJ] == '-' && lifeCount == 3) arr[pI][pJ] = '*';
+        else if(copy[pI][pJ] == '*' && (lifeCount > 3 || lifeCount < 2) arr[pI][pJ] = '-';
+     }
+  }
 }
 int compare_and_check(char** arr, char** arr2, int rows, int columns) {
 	bool found = false;
