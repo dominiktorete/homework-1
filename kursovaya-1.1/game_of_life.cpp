@@ -118,7 +118,7 @@ void game_logic(char** arr, char** copy, int rows, int columns) {
               if( i < 0 || j >= columns){
                  continue;
               }
-              if( i == i && j == j ){
+              if( i == pI && j == pJ ){
                  continue;
               }
               if( copy[i][j] == '*' ){
