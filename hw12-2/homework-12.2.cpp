@@ -9,13 +9,13 @@ int main() {
 	std::ifstream file("in1.txt");
 	if (file.is_open()) {
 		int index{}, i{};
+   file >> index;
 		int* arr = new (std::nothrow)int[index];
 		if (!arr) {
 			std::cerr << "Error: don`t creaty massive" << std::endl;
 			file.close();
 			return -1;
-		}
-		file >> index;
+	}
 		while (file >> arr[i] && i < index) {
 			i++;
 		}
